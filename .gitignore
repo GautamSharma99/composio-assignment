@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Env / secrets
+.env
+.env.local
+*.key
+
+# Runtime data (raw cached pages are regenerable; keep results/ground_truth/accuracy committed if you want)
+data/cache/
+data/checkpoints/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Vercel
+.vercel/

@@ -1,0 +1,2464 @@
+{
+  "meta": {
+    "sample_size": 20,
+    "scored_fields": [
+      "auth_methods",
+      "self_serve",
+      "api_type",
+      "api_breadth",
+      "public_docs",
+      "existing_mcp",
+      "buildability"
+    ],
+    "confidence_threshold": 0.6,
+    "metric": "Primary = decision accuracy: existing_mcp scored on existence (official/community both = an MCP exists), api_breadth adjacency-tolerant; all other fields exact match. Strict exact-match reported alongside for full transparency.",
+    "note": "Pass 1 = naive baseline (1 search, 1 fetch, ungrounded). Pass 2 = grounded extraction (L1) + blind cross-check (L2) + targeted MCP probe (L3) + confidence gate (L4)."
+  },
+  "overall": {
+    "pass1": 0.6714,
+    "pass2": 0.7786,
+    "delta": 0.1072,
+    "pass1_strict": 0.5929,
+    "pass2_strict": 0.6786,
+    "delta_strict": 0.0857,
+    "fields_fixed_by_loops": 21
+  },
+  "failure_modes": {
+    "pass1": {
+      "H1_hallucinated_mcp": 1,
+      "H2_selfserve_where_gated": 2,
+      "H3_multiauth_collapsed": 3
+    },
+    "pass2": {
+      "H1_hallucinated_mcp": 1,
+      "H2_selfserve_where_gated": 1,
+      "H3_multiauth_collapsed": 1
+    }
+  },
+  "per_field": [
+    {
+      "field": "auth_methods",
+      "pass1": 0.35,
+      "pass2": 0.55,
+      "delta": 0.2,
+      "pass1_strict": 0.35,
+      "pass2_strict": 0.55,
+      "pass2_correct": 11,
+      "pass2_total": 20
+    },
+    {
+      "field": "self_serve",
+      "pass1": 0.55,
+      "pass2": 0.6,
+      "delta": 0.05,
+      "pass1_strict": 0.55,
+      "pass2_strict": 0.6,
+      "pass2_correct": 12,
+      "pass2_total": 20
+    },
+    {
+      "field": "api_type",
+      "pass1": 0.8,
+      "pass2": 0.8,
+      "delta": 0.0,
+      "pass1_strict": 0.8,
+      "pass2_strict": 0.8,
+      "pass2_correct": 16,
+      "pass2_total": 20
+    },
+    {
+      "field": "api_breadth",
+      "pass1": 0.9,
+      "pass2": 0.9,
+      "delta": 0.0,
+      "pass1_strict": 0.5,
+      "pass2_strict": 0.5,
+      "pass2_correct": 18,
+      "pass2_total": 20
+    },
+    {
+      "field": "public_docs",
+      "pass1": 1.0,
+      "pass2": 0.95,
+      "delta": -0.05,
+      "pass1_strict": 1.0,
+      "pass2_strict": 0.95,
+      "pass2_correct": 19,
+      "pass2_total": 20
+    },
+    {
+      "field": "existing_mcp",
+      "pass1": 0.3,
+      "pass2": 0.9,
+      "delta": 0.6,
+      "pass1_strict": 0.15,
+      "pass2_strict": 0.6,
+      "pass2_correct": 18,
+      "pass2_total": 20
+    },
+    {
+      "field": "buildability",
+      "pass1": 0.8,
+      "pass2": 0.75,
+      "delta": -0.05,
+      "pass1_strict": 0.8,
+      "pass2_strict": 0.75,
+      "pass2_correct": 15,
+      "pass2_total": 20
+    }
+  ],
+  "per_app": [
+    {
+      "id": 1,
+      "name": "GitHub",
+      "category": "Dev & Infrastructure",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2",
+            "Token",
+            "Basic"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "both",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2",
+            "Token",
+            "Basic"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "both",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "Notion",
+      "category": "Productivity & Docs",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2",
+            "Token"
+          ],
+          "truth": [
+            "OAuth2",
+            "Token"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2",
+            "Token"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "Grain",
+      "category": "Productivity & Docs",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2",
+            "Token"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2",
+            "Token"
+          ],
+          "truth": [
+            "OAuth2",
+            "Token"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "paid_gated",
+          "truth": "self_serve",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "easy_win",
+          "correct": false,
+          "correct_lenient": false
+        }
+      }
+    },
+    {
+      "id": 30,
+      "name": "Plain",
+      "category": "Communication & Messaging",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "GraphQL",
+          "truth": "GraphQL",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "GraphQL",
+          "truth": "GraphQL",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 34,
+      "name": "Copper",
+      "category": "CRM & Sales",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key",
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "free_trial",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "buildable_with_effort",
+          "correct": false,
+          "correct_lenient": false
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "API_key",
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "admin_approval",
+          "truth": "free_trial",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "community",
+          "truth": "community",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 37,
+      "name": "Twenty",
+      "category": "CRM & Sales",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "both",
+          "truth": "both",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2",
+            "Token"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "both",
+          "truth": "both",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "community",
+          "truth": "community",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 41,
+      "name": "Stripe",
+      "category": "Finance & Fintech",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key",
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "API_key",
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 43,
+      "name": "PitchBook",
+      "category": "Finance & Fintech",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": false,
+          "truth": false,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "unknown",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "blocked",
+          "truth": "blocked",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": false,
+          "truth": false,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "blocked",
+          "correct": false,
+          "correct_lenient": false
+        }
+      }
+    },
+    {
+      "id": 44,
+      "name": "DealCloud",
+      "category": "Finance & Fintech",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "unknown",
+          "truth": "none",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "blocked",
+          "correct": false,
+          "correct_lenient": false
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "none",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "blocked",
+          "correct": false,
+          "correct_lenient": false
+        }
+      }
+    },
+    {
+      "id": 45,
+      "name": "Paygent",
+      "category": "Finance & Fintech",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "Other"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "unknown",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "narrow",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": false,
+          "truth": false,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "unknown",
+          "truth": "none",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "blocked",
+          "truth": "blocked",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "Token"
+          ],
+          "truth": [
+            "Other"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "unknown",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "narrow",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": false,
+          "truth": false,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "none",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "blocked",
+          "truth": "blocked",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "category": "Finance & Fintech",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "contact_sales",
+          "truth": "contact_sales",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "unknown",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "narrow",
+          "truth": "unknown",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "public_docs": {
+          "pred": false,
+          "truth": false,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "none",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "blocked",
+          "truth": "blocked",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "Basic",
+            "OAuth2"
+          ],
+          "truth": [],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "contact_sales",
+          "truth": "contact_sales",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "unknown",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "unknown",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": false,
+          "correct": false,
+          "correct_lenient": false
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "none",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "blocked",
+          "truth": "blocked",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 52,
+      "name": "SendGrid",
+      "category": "Marketing & Ads",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 54,
+      "name": "Meta Ads",
+      "category": "Marketing & Ads",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "partner_gated",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "GraphQL",
+          "truth": "REST",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "partner_gated",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "GraphQL",
+          "truth": "REST",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "community",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 65,
+      "name": "Amazon SP-API",
+      "category": "Commerce & Payments",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "partner_gated",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "partner_gated",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "community",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 70,
+      "name": "fanbasis",
+      "category": "Commerce & Payments",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "admin_approval",
+          "truth": "self_serve",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "none",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "paid_gated",
+          "truth": "self_serve",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "none",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 73,
+      "name": "Firecrawl",
+      "category": "Data, SEO & Scraping",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key",
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "API_key",
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "self_serve",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "easy_win",
+          "correct": false,
+          "correct_lenient": false
+        }
+      }
+    },
+    {
+      "id": 79,
+      "name": "Waterfall.io",
+      "category": "Data, SEO & Scraping",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "paid_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "narrow",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "unknown",
+          "truth": "none",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "blocked",
+          "correct": false,
+          "correct_lenient": false
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "contact_sales",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "narrow",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "none",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "blocked",
+          "correct": false,
+          "correct_lenient": false
+        }
+      }
+    },
+    {
+      "id": 81,
+      "name": "OpenAI",
+      "category": "AI & Research",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "paid_gated",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2",
+            "Other"
+          ],
+          "truth": [
+            "API_key"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "paid_gated",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "broad",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "easy_win",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 86,
+      "name": "Devin",
+      "category": "AI & Research",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "API_key",
+            "Token"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "paid_gated",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "unknown",
+          "truth": "official",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "API_key"
+          ],
+          "truth": [
+            "API_key",
+            "Token"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "paid_gated",
+          "truth": "paid_gated",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "official",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    },
+    {
+      "id": 91,
+      "name": "Threads",
+      "category": "Social & Media",
+      "pass1": {
+        "auth_methods": {
+          "pred": [
+            "API_key",
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": false,
+          "correct_lenient": false
+        },
+        "self_serve": {
+          "pred": "self_serve",
+          "truth": "partner_gated",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "none",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": false
+        },
+        "buildability": {
+          "pred": "easy_win",
+          "truth": "buildable_with_effort",
+          "correct": false,
+          "correct_lenient": false
+        }
+      },
+      "pass2": {
+        "auth_methods": {
+          "pred": [
+            "OAuth2"
+          ],
+          "truth": [
+            "OAuth2"
+          ],
+          "correct": true,
+          "correct_lenient": true
+        },
+        "self_serve": {
+          "pred": "partner_gated",
+          "truth": "partner_gated",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_type": {
+          "pred": "REST",
+          "truth": "REST",
+          "correct": true,
+          "correct_lenient": true
+        },
+        "api_breadth": {
+          "pred": "broad",
+          "truth": "moderate",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "public_docs": {
+          "pred": true,
+          "truth": true,
+          "correct": true,
+          "correct_lenient": true
+        },
+        "existing_mcp": {
+          "pred": "official",
+          "truth": "community",
+          "correct": false,
+          "correct_lenient": true
+        },
+        "buildability": {
+          "pred": "buildable_with_effort",
+          "truth": "buildable_with_effort",
+          "correct": true,
+          "correct_lenient": true
+        }
+      }
+    }
+  ],
+  "remaining_misses": [
+    {
+      "id": 1,
+      "name": "GitHub",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key",
+        "OAuth2"
+      ],
+      "truth": [
+        "OAuth2",
+        "Token",
+        "Basic"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 1,
+      "name": "GitHub",
+      "field": "api_type",
+      "predicted": "REST",
+      "truth": "both",
+      "failure_mode": "other"
+    },
+    {
+      "id": 11,
+      "name": "Notion",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key",
+        "OAuth2"
+      ],
+      "truth": [
+        "OAuth2",
+        "Token"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 20,
+      "name": "Grain",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key",
+        "OAuth2",
+        "Token"
+      ],
+      "truth": [
+        "OAuth2",
+        "Token"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 20,
+      "name": "Grain",
+      "field": "self_serve",
+      "predicted": "paid_gated",
+      "truth": "self_serve",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 20,
+      "name": "Grain",
+      "field": "buildability",
+      "predicted": "buildable_with_effort",
+      "truth": "easy_win",
+      "failure_mode": "other"
+    },
+    {
+      "id": 34,
+      "name": "Copper",
+      "field": "self_serve",
+      "predicted": "admin_approval",
+      "truth": "free_trial",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 37,
+      "name": "Twenty",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key",
+        "OAuth2",
+        "Token"
+      ],
+      "truth": [
+        "API_key"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 43,
+      "name": "PitchBook",
+      "field": "self_serve",
+      "predicted": "partner_gated",
+      "truth": "contact_sales",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 43,
+      "name": "PitchBook",
+      "field": "existing_mcp",
+      "predicted": "none",
+      "truth": "official",
+      "failure_mode": "H1 hallucinated MCP existence"
+    },
+    {
+      "id": 43,
+      "name": "PitchBook",
+      "field": "buildability",
+      "predicted": "buildable_with_effort",
+      "truth": "blocked",
+      "failure_mode": "other"
+    },
+    {
+      "id": 44,
+      "name": "DealCloud",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key"
+      ],
+      "truth": [
+        "OAuth2"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 44,
+      "name": "DealCloud",
+      "field": "self_serve",
+      "predicted": "partner_gated",
+      "truth": "contact_sales",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 44,
+      "name": "DealCloud",
+      "field": "buildability",
+      "predicted": "buildable_with_effort",
+      "truth": "blocked",
+      "failure_mode": "other"
+    },
+    {
+      "id": 45,
+      "name": "Paygent",
+      "field": "auth_methods",
+      "predicted": [
+        "Token"
+      ],
+      "truth": [
+        "Other"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 45,
+      "name": "Paygent",
+      "field": "self_serve",
+      "predicted": "partner_gated",
+      "truth": "contact_sales",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 45,
+      "name": "Paygent",
+      "field": "api_type",
+      "predicted": "REST",
+      "truth": "unknown",
+      "failure_mode": "other"
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key",
+        "Basic",
+        "OAuth2"
+      ],
+      "truth": [],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "field": "api_type",
+      "predicted": "REST",
+      "truth": "unknown",
+      "failure_mode": "other"
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "field": "api_breadth",
+      "predicted": "broad",
+      "truth": "unknown",
+      "failure_mode": "other"
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "field": "public_docs",
+      "predicted": true,
+      "truth": false,
+      "failure_mode": "other"
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "field": "existing_mcp",
+      "predicted": "official",
+      "truth": "none",
+      "failure_mode": "H1 hallucinated MCP existence"
+    },
+    {
+      "id": 54,
+      "name": "Meta Ads",
+      "field": "api_type",
+      "predicted": "GraphQL",
+      "truth": "REST",
+      "failure_mode": "other"
+    },
+    {
+      "id": 70,
+      "name": "fanbasis",
+      "field": "self_serve",
+      "predicted": "paid_gated",
+      "truth": "self_serve",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 73,
+      "name": "Firecrawl",
+      "field": "buildability",
+      "predicted": "buildable_with_effort",
+      "truth": "easy_win",
+      "failure_mode": "other"
+    },
+    {
+      "id": 79,
+      "name": "Waterfall.io",
+      "field": "self_serve",
+      "predicted": "partner_gated",
+      "truth": "contact_sales",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 79,
+      "name": "Waterfall.io",
+      "field": "api_breadth",
+      "predicted": "broad",
+      "truth": "narrow",
+      "failure_mode": "other"
+    },
+    {
+      "id": 79,
+      "name": "Waterfall.io",
+      "field": "buildability",
+      "predicted": "buildable_with_effort",
+      "truth": "blocked",
+      "failure_mode": "other"
+    },
+    {
+      "id": 81,
+      "name": "OpenAI",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key",
+        "OAuth2",
+        "Other"
+      ],
+      "truth": [
+        "API_key"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    },
+    {
+      "id": 81,
+      "name": "OpenAI",
+      "field": "self_serve",
+      "predicted": "self_serve",
+      "truth": "paid_gated",
+      "failure_mode": "H2 self-serve claimed where gated"
+    },
+    {
+      "id": 86,
+      "name": "Devin",
+      "field": "auth_methods",
+      "predicted": [
+        "API_key"
+      ],
+      "truth": [
+        "API_key",
+        "Token"
+      ],
+      "failure_mode": "H3 multi-auth collapsed"
+    }
+  ]
+}

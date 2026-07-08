@@ -1,0 +1,15 @@
+# Core (versions verified installed on Python 3.14)
+# NOTE: composio 0.17.x requires openai>=2, so openai is pinned to 2.x.
+openai>=2,<3
+pydantic>=2.9,<3
+httpx>=0.27
+python-dotenv>=1.0
+tenacity>=8.2
+
+# Free fallback backend (no API key needed): DuckDuckGo search + HTML extraction
+ddgs>=9,<10
+beautifulsoup4>=4.12
+
+# PRIMARY backend: Composio SDK + MCP (search/scrape) and the OpenAI proof demo.
+composio==0.17.1
+composio-openai==0.17.1

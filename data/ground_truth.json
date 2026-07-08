@@ -1,0 +1,403 @@
+{
+  "meta": {
+    "labeled_at": "2026-07-08T23:03:45.750890+00:00",
+    "labeler": "human-reviewed (research-assisted); owner: kartik.shukla@finrep.ai",
+    "sample_size": 20,
+    "method": "Each app hand-labeled against its real current docs/pricing with evidence URLs. Honest corrections to initial expectations kept (e.g. fanbasis/Waterfall/DealCloud DO publish public docs; iPayX has no public API; OpenAI now paid_gated).",
+    "scored_fields": [
+      "auth_methods",
+      "self_serve",
+      "api_type",
+      "api_breadth",
+      "public_docs",
+      "existing_mcp",
+      "buildability"
+    ]
+  },
+  "apps": [
+    {
+      "id": 1,
+      "name": "GitHub",
+      "category": "Dev & Infrastructure",
+      "auth_methods": [
+        "OAuth2",
+        "Token",
+        "Basic"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "both",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "easy_win",
+      "notes": "Public REST + GraphQL docs; personal access tokens, OAuth apps, and GitHub App tokens are self-serve; GitHub ships an official MCP server.",
+      "evidence": [
+        "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+        "https://github.com/github/github-mcp-server"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Notion",
+      "category": "Productivity & Docs",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "easy_win",
+      "notes": "Public REST docs; internal integration token (self-serve) or OAuth for public integrations; Notion hosts an official MCP server at mcp.notion.com.",
+      "evidence": [
+        "https://developers.notion.com/reference/authentication",
+        "https://developers.notion.com/guides/mcp/get-started-with-mcp"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Grain",
+      "category": "Productivity & Docs",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "community",
+      "buildability": "easy_win",
+      "notes": "Confirmed the grain.com meeting recorder; public REST docs with self-serve Personal/Workspace Access Tokens plus OAuth2, though some third-party sources suggest full API may need a paid plan; only a community MCP (eadm/grain-mcp-server) exists.",
+      "evidence": [
+        "https://developers.grain.com/",
+        "https://github.com/eadm/grain-mcp-server"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Plain",
+      "category": "Communication & Messaging",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "GraphQL",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "easy_win",
+      "notes": "Confirmed the plain.com B2B support tool; GraphQL-only API with a self-serve Bearer API key from workspace settings and public docs; Plain ships an official hosted MCP server at mcp.plain.com.",
+      "evidence": [
+        "https://www.plain.com/docs/graphql/introduction",
+        "https://help.plain.com/article/mcp-server"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Copper",
+      "category": "CRM & Sales",
+      "auth_methods": [
+        "API_key",
+        "OAuth2"
+      ],
+      "self_serve": "free_trial",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "community",
+      "buildability": "buildable_with_effort",
+      "notes": "Confirmed the copper.com CRM (not the metal or Copper.co); public REST docs, token+email API key auth (admin-only, requires a paid Copper account with free trial) plus OAuth2 for partners; only third-party/aggregator MCPs (Apideck, viaSocket) found.",
+      "evidence": [
+        "https://developer.copper.com/introduction/authentication.html",
+        "https://support.copper.com/en/articles/8823347-generating-an-api-key"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Twenty",
+      "category": "CRM & Sales",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "both",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "community",
+      "buildability": "easy_win",
+      "notes": "Confirmed the open-source twenty.com CRM; public docs, self-serve Bearer API key (free cloud tier or self-host), auto-generated REST and GraphQL endpoints from the workspace schema; community MCP servers exist (e.g. mhenry3164/twenty-crm-mcp-server).",
+      "evidence": [
+        "https://docs.twenty.com/developers/extend/api",
+        "https://github.com/mhenry3164/twenty-crm-mcp-server"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Stripe",
+      "category": "Finance & Fintech",
+      "auth_methods": [
+        "API_key",
+        "OAuth2"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "easy_win",
+      "notes": "Public REST docs; secret/restricted API keys with test keys available instantly on signup (OAuth2 used for Connect); Stripe ships an official MCP server at mcp.stripe.com.",
+      "evidence": [
+        "https://docs.stripe.com/api/authentication",
+        "https://docs.stripe.com/mcp"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "PitchBook",
+      "category": "Finance & Fintech",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "contact_sales",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": false,
+      "existing_mcp": "official",
+      "buildability": "blocked",
+      "notes": "RESTful private-capital data API but a standalone paid contract via the Direct Data team is required and the actual API reference is client-gated (only marketing pages are public); PitchBook ships an MCP-based Premium Connector but it is limited to licensed enterprise users, and exact auth could not be fully verified behind the gate.",
+      "evidence": [
+        "https://pitchbook.com/products/direct-access-data/api",
+        "https://pitchbook.com/help/PitchBook-api"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "DealCloud",
+      "category": "Finance & Fintech",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "self_serve": "contact_sales",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "none",
+      "buildability": "blocked",
+      "notes": "Confirmed the Intapp DealCloud dealmaking CRM; docs are publicly viewable at api.docs.dealcloud.com and use OAuth2 client-credentials (client_id + apiKey), but access requires an enterprise DealCloud site sold via sales, and no MCP server was found.",
+      "evidence": [
+        "https://api.docs.dealcloud.com/",
+        "https://api.docs.dealcloud.com/docs/token"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Paygent",
+      "category": "Finance & Fintech",
+      "auth_methods": [
+        "Other"
+      ],
+      "self_serve": "contact_sales",
+      "api_type": "unknown",
+      "api_breadth": "moderate",
+      "public_docs": false,
+      "existing_mcp": "none",
+      "buildability": "blocked",
+      "notes": "Confirmed the Japanese Paygent Connect gateway (paygent.co.jp); a server-to-server HTTP module-type integration authenticated via client certificate plus merchant credentials/hash keys issued at contract, with the official spec available only behind the merchant portal (Japanese), so exact API shape could not be verified.",
+      "evidence": [
+        "https://www.paygent.co.jp/payment_service/connect/",
+        "https://www.paygent.co.jp/payment_service/connect/module_type/"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "iPayX",
+      "category": "Finance & Fintech",
+      "auth_methods": [],
+      "self_serve": "contact_sales",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "public_docs": false,
+      "existing_mcp": "none",
+      "buildability": "blocked",
+      "notes": "Confirmed the Internet Payment Exchange (IPayX) enterprise EBP/B2B payment provider; no public self-serve developer API or docs were found (enterprise/contract only); note the MCP server at ipayx.ai belongs to a different, unrelated FX-audit company.",
+      "evidence": [
+        "https://rocketreach.co/internet-payment-exchange-inc-ipayx-profile_b5c27d46f42e0eed"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "SendGrid",
+      "category": "Marketing & Ads",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "community",
+      "buildability": "easy_win",
+      "notes": "Twilio SendGrid v3 REST API with public docs and self-serve Bearer API keys (scoped, free tier available); community MCP servers exist (Garoth/sendgrid-mcp), plus a Twilio Alpha MCP.",
+      "evidence": [
+        "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+        "https://github.com/Garoth/sendgrid-mcp"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Meta Ads",
+      "category": "Marketing & Ads",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "self_serve": "partner_gated",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "buildable_with_effort",
+      "notes": "Meta Marketing (Graph) API with public docs and OAuth2, but real/advanced access requires App Review plus business verification; Meta launched an official Ads MCP (mcp.facebook.com/ads, 2026 beta) and many community Meta Ads MCP servers also exist.",
+      "evidence": [
+        "https://developers.facebook.com/docs/marketing-api/get-started/authorization",
+        "https://developers.facebook.com/docs/resp-plat-initiatives/individual-processes/app-review"
+      ]
+    },
+    {
+      "id": 65,
+      "name": "Amazon SP-API",
+      "category": "Commerce & Payments",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "self_serve": "partner_gated",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "buildable_with_effort",
+      "notes": "Amazon Selling Partner API with public docs and OAuth2 via Login with Amazon (AWS SigV4 was formerly required), but you must register as an SP-API developer and get app approval; Amazon publishes MCP dev tooling in the official amzn/selling-partner-api-samples repo and community SP-API MCPs exist.",
+      "evidence": [
+        "https://developer-docs.amazon.com/sp-api/docs/sp-api-registration-overview",
+        "https://github.com/amzn/selling-partner-api-samples"
+      ]
+    },
+    {
+      "id": 70,
+      "name": "fanbasis",
+      "category": "Commerce & Payments",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "none",
+      "buildability": "buildable_with_effort",
+      "notes": "Confirmed the fanbasis.com creator-monetization/checkout platform; contrary to the gated expectation, public REST docs exist at apidocs.fan with a self-serve x-api-key from the dashboard, but you must first have a FanBasis merchant (Merchant-of-Record) account which likely involves onboarding/KYC; no MCP server found.",
+      "evidence": [
+        "https://apidocs.fan/"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Firecrawl",
+      "category": "Data, SEO & Scraping",
+      "auth_methods": [
+        "API_key",
+        "OAuth2"
+      ],
+      "self_serve": "self_serve",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "easy_win",
+      "notes": "Public REST docs at docs.firecrawl.dev with a self-serve API key (free tier) or OAuth bearer token; Firecrawl ships an official MCP server (firecrawl/firecrawl-mcp-server).",
+      "evidence": [
+        "https://docs.firecrawl.dev/",
+        "https://github.com/firecrawl/firecrawl-mcp-server"
+      ]
+    },
+    {
+      "id": 79,
+      "name": "Waterfall.io",
+      "category": "Data, SEO & Scraping",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "contact_sales",
+      "api_type": "REST",
+      "api_breadth": "narrow",
+      "public_docs": true,
+      "existing_mcp": "none",
+      "buildability": "blocked",
+      "notes": "Confirmed the waterfall.io B2B mobile-identity/data-enrichment tool; docs are public at docs.waterfall.io (REST, x-api-key) but there is no self-serve signup - access is sales-gated behind Book-a-Call/dedicated onboarding; no MCP server found.",
+      "evidence": [
+        "https://www.waterfall.io/",
+        "https://docs.waterfall.io/v1/introduction"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "OpenAI",
+      "category": "AI & Research",
+      "auth_methods": [
+        "API_key"
+      ],
+      "self_serve": "paid_gated",
+      "api_type": "REST",
+      "api_breadth": "broad",
+      "public_docs": true,
+      "existing_mcp": "community",
+      "buildability": "easy_win",
+      "notes": "Public REST docs and instant self-serve Bearer secret keys, but a payment method / prepaid credits must be added before the API will make successful calls (hence paid_gated); OpenAI has not shipped an official MCP server exposing its API, though community OpenAI MCP bridges exist.",
+      "evidence": [
+        "https://platform.openai.com/docs/api-reference",
+        "https://help.openai.com/en/articles/8264644-how-can-i-set-up-prepaid-billing"
+      ]
+    },
+    {
+      "id": 86,
+      "name": "Devin",
+      "category": "AI & Research",
+      "auth_methods": [
+        "API_key",
+        "Token"
+      ],
+      "self_serve": "paid_gated",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "official",
+      "buildability": "buildable_with_effort",
+      "notes": "Confirmed the Cognition devin.ai AI software engineer; public REST API docs at docs.devin.ai with cog_ service API keys (personal access tokens in closed beta), but Devin has no free tier (paid plan required and API historically enterprise-oriented); Cognition ships an official Devin MCP server at mcp.devin.ai.",
+      "evidence": [
+        "https://docs.devin.ai/api-reference/authentication",
+        "https://docs.devin.ai/work-with-devin/devin-mcp"
+      ]
+    },
+    {
+      "id": 91,
+      "name": "Threads",
+      "category": "Social & Media",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "self_serve": "partner_gated",
+      "api_type": "REST",
+      "api_breadth": "moderate",
+      "public_docs": true,
+      "existing_mcp": "community",
+      "buildability": "buildable_with_effort",
+      "notes": "Confirmed the Meta Threads API (developers.facebook.com/docs/threads); public docs, OAuth2 user access tokens only, but production beyond 25 test users requires Meta App Review; only community Threads MCP servers found (e.g. quinnjr/threads-mcp).",
+      "evidence": [
+        "https://developers.facebook.com/docs/threads/get-started/get-access-tokens-and-permissions/",
+        "https://github.com/quinnjr/threads-mcp"
+      ]
+    }
+  ]
+}
