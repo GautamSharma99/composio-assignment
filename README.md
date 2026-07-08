@@ -54,8 +54,3 @@ agent/                   the pipeline            data/ground_truth.json   20-app
   proof_demo.py          OpenAI → Composio tool  site/index.html          the deliverable page
 ```
 
-## Deploy
-
-```bash
-python -m agent.build_site && npx vercel deploy site --prod
-```
