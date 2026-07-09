@@ -4,7 +4,7 @@ An agent that researches 100 apps for how build-ready they are as agent tools (a
 self-serve vs gated, API surface, MCP-readiness, buildability), then **verifies its own
 accuracy with a measured Pass 1 → Pass 2 delta** and ships one self-contained HTML page.
 
-- **Live page:** _<add your Vercel URL>_
+- **Live page:** https://composio-assignment-five.vercel.app/
 - **Result:** decision accuracy **67% → 78% (+11 pts)** on a hand-labeled 20-app sample; all
   100 apps researched, every field backed by an evidence URL.
 
